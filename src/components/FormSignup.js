@@ -1,7 +1,7 @@
 import React from 'react';
-import validate from './validateInfo';
-import useForm from './useForm';
-import './Form.css';
+import validate from '../validateInfo';
+import useForm from '../useForm';
+import '../Form.css';
 
 const FormSignup = ({ submitForm }) => {
   const { handleChange, handleSubmit, values, errors } = useForm(
@@ -17,6 +17,7 @@ const FormSignup = ({ submitForm }) => {
             Tipo de Estrutura
           </label>
           <select
+            className="form-input"
             name="typeStructure"
             id="typeStructure"
             onChange={handleChange}

@@ -2,9 +2,9 @@ import { useState, useEffect } from 'react';
 
 const useForm = (callback, validate) => {
   const [values, setValues] = useState({
-    username: '',
-    email: '',
-    password: '',
+    typeStructure: '',
+    valorConta: '',
+    cep: '',
   });
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);

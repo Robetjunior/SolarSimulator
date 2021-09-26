@@ -10,6 +10,9 @@ import {
   TableHead,
   TableRow,
   Paper,
+  List,
+  ListItem,
+  ListItemText,
 } from '@mui/material';
 
 import { makeStyles } from '@material-ui/styles';
@@ -138,6 +141,51 @@ const FormSuccess = ({ clientData }) => {
               </Table>
             </TableContainer>
 
+            <List>
+              <ListItem button>
+                <ListItemText
+                  primary="Irradiancia"
+                  secondary={`${clientData.irradiancia} W/m² `}
+                />
+              </ListItem>
+              <ListItem button>
+                <ListItemText
+                  primary="Irradiancia Minima"
+                  secondary={`${clientData.irradiancia_minima} W/m² `}
+                />
+              </ListItem>
+              <ListItem button>
+                <ListItemText
+                  primary="Irradiancia Maxima"
+                  secondary={`${clientData.irradiancia_maxima} W/m² `}
+                />
+              </ListItem>
+              <ListItem button>
+                <ListItemText
+                  primary="CO2"
+                  secondary={`${clientData.co2.toFixed(2)} `}
+                />
+              </ListItem>
+              <ListItem button>
+                <ListItemText
+                  primary="Integradores na Região"
+                  secondary={`${clientData.integradores_regiao} `}
+                />
+              </ListItem>
+              <ListItem button>
+                <ListItemText
+                  primary="Minimo de Integradores"
+                  secondary={`${clientData.integradores_minimo} `}
+                />
+              </ListItem>
+              <ListItem button>
+                <ListItemText
+                  primary="Máximo de Integradores"
+                  secondary={`${clientData.integradores_maximo} `}
+                />
+              </ListItem>
+            </List>
+
             <Typography variant="h4">Kit</Typography>
             <TableContainer component={Paper}>
               <Table
@@ -205,7 +253,7 @@ const FormSuccess = ({ clientData }) => {
           </Container>
         </>
       ) : (
-        <Container maxWidth="md">
+        <Container maxWidth="lg" className={classes.tableContainer}>
           <Typography variant="h2">Carregando...</Typography>
         </Container>
       )}

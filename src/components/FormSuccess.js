@@ -12,6 +12,34 @@ import {
   Paper,
 } from '@mui/material';
 
+import { makeStyles } from '@material-ui/styles';
+
+const useStyles = makeStyles((theme) => ({
+  palette: {
+    color: 'green',
+    fontWeight: 'bold',
+  },
+  typography: {
+    marginBottom: '1rem',
+  },
+  table: {
+    minWidth: 650,
+  },
+  tableSpace: {
+    marginBottom: '2rem',
+  },
+  tableContainer: {
+    borderRadius: 15,
+    padding: '10px',
+    marginTop: '1rem',
+  },
+  tableHeaderCell: {
+    fontWeight: 'bold',
+    paddingTop: '1.25rem',
+    backgroundColor: 'rgb(255, 179, 39)',
+  },
+}));
+
 function createData(
   parcelas,
   taxa_minina,
@@ -23,6 +51,7 @@ function createData(
 }
 
 const FormSuccess = ({ clientData }) => {
+  const classes = useStyles();
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -42,28 +71,42 @@ const FormSuccess = ({ clientData }) => {
     <>
       {!isLoading ? (
         <>
-          <Container maxWidth="lg">
-            <Typography variant="h5" classes>
-              Economia: R$ {clientData.economia.toFixed(2)}
+          <Container maxWidth="lg" className={classes.tableContainer}>
+            <Typography variant="h5" className={classes.typography}>
+              Potencial:
+              <span className={classes.palette}> {clientData.potencial}</span>
             </Typography>
 
-            <Typography variant="h5" classes>
-              Potencial: {clientData.potencial}
+            <Typography variant="h5" className={classes.typography}>
+              Valor de Instalação: R$ {clientData.valor_instalacao.toFixed(2)}
             </Typography>
-            <Typography variant="h5">Parcelamento</Typography>
-            <TableContainer component={Paper}>
+
+            <Typography variant="h5" className={classes.typography}>
+              Economia: R$ {clientData.economia.toFixed(2)}
+            </Typography>
+            <TableContainer component={Paper} className={classes.tableSpace}>
               <Table
-                sx={{ minWidth: 350 }}
+                className={classes.table}
                 size="small"
                 aria-label="a dense table"
               >
                 <TableHead>
                   <TableRow>
-                    <TableCell>Parcelas</TableCell>
-                    <TableCell>Taxa Minina</TableCell>
-                    <TableCell>Taxa Maxima</TableCell>
-                    <TableCell>Valor Minimo</TableCell>
-                    <TableCell>Valor Máximo</TableCell>
+                    <TableCell className={classes.tableHeaderCell}>
+                      Parcelas
+                    </TableCell>
+                    <TableCell className={classes.tableHeaderCell}>
+                      Taxa Minina
+                    </TableCell>
+                    <TableCell className={classes.tableHeaderCell}>
+                      Taxa Maxima
+                    </TableCell>
+                    <TableCell className={classes.tableHeaderCell}>
+                      Valor Minimo
+                    </TableCell>
+                    <TableCell className={classes.tableHeaderCell}>
+                      Valor Máximo
+                    </TableCell>
                   </TableRow>
                 </TableHead>
                 <TableBody>
@@ -104,12 +147,24 @@ const FormSuccess = ({ clientData }) => {
               >
                 <TableHead>
                   <TableRow>
-                    <TableCell>Titulo</TableCell>
-                    <TableCell>Quantidade</TableCell>
-                    <TableCell>Valor</TableCell>
-                    <TableCell>Custo</TableCell>
-                    <TableCell>Descrição</TableCell>
-                    <TableCell>Datasheet</TableCell>
+                    <TableCell className={classes.tableHeaderCell}>
+                      Titulo
+                    </TableCell>
+                    <TableCell className={classes.tableHeaderCell}>
+                      Quantidade
+                    </TableCell>
+                    <TableCell className={classes.tableHeaderCell}>
+                      Valor
+                    </TableCell>
+                    <TableCell className={classes.tableHeaderCell}>
+                      Custo
+                    </TableCell>
+                    <TableCell className={classes.tableHeaderCell}>
+                      Descrição
+                    </TableCell>
+                    <TableCell className={classes.tableHeaderCell}>
+                      Datasheet
+                    </TableCell>
                   </TableRow>
                 </TableHead>
                 <TableBody>

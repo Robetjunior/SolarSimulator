@@ -23,6 +23,6 @@ Para executar a aplicação:
 </h3>
 
 <h2>Tempo para finalização do projeto</h2>
-<h3>12h</h3>
+<h3>8h</h3>
 
 

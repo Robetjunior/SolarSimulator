@@ -26,4 +26,3 @@ Para executar a aplicação:
 <h3>12h</h3>
 
 
-# SolarSimulator

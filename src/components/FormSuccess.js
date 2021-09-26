@@ -42,8 +42,15 @@ const FormSuccess = ({ clientData }) => {
     <>
       {!isLoading ? (
         <>
-          <Container maxWidth="md">
-            <p>Economia: {clientData.economia}</p>
+          <Container maxWidth="lg">
+            <Typography variant="h5" classes>
+              Economia: R$ {clientData.economia.toFixed(2)}
+            </Typography>
+
+            <Typography variant="h5" classes>
+              Potencial: {clientData.potencial}
+            </Typography>
+            <Typography variant="h5">Parcelamento</Typography>
             <TableContainer component={Paper}>
               <Table
                 sx={{ minWidth: 350 }}
@@ -56,7 +63,7 @@ const FormSuccess = ({ clientData }) => {
                     <TableCell>Taxa Minina</TableCell>
                     <TableCell>Taxa Maxima</TableCell>
                     <TableCell>Valor Minimo</TableCell>
-                    <TableCell>Valor MAximo</TableCell>
+                    <TableCell>Valor Máximo</TableCell>
                   </TableRow>
                 </TableHead>
                 <TableBody>
@@ -87,7 +94,59 @@ const FormSuccess = ({ clientData }) => {
                 </TableBody>
               </Table>
             </TableContainer>
-            <div className="form-content-right"></div>
+
+            <Typography variant="h4">Kit</Typography>
+            <TableContainer component={Paper}>
+              <Table
+                sx={{ minWidth: 350 }}
+                size="small"
+                aria-label="a dense table"
+              >
+                <TableHead>
+                  <TableRow>
+                    <TableCell>Titulo</TableCell>
+                    <TableCell>Quantidade</TableCell>
+                    <TableCell>Valor</TableCell>
+                    <TableCell>Custo</TableCell>
+                    <TableCell>Descrição</TableCell>
+                    <TableCell>Datasheet</TableCell>
+                  </TableRow>
+                </TableHead>
+                <TableBody>
+                  {clientData.kit.map((kit) => (
+                    <TableRow
+                      key={kit.id}
+                      sx={{
+                        '&:last-child td, &:last-child th': { border: 0 },
+                      }}
+                    >
+                      <TableCell key={kit.id} scope="row" sortDirection="asc">
+                        {kit.titulo}
+                      </TableCell>
+
+                      <TableCell scope="row">{kit.qtde}</TableCell>
+
+                      <TableCell scope="row">
+                        R${kit.valor.toFixed(2)}
+                      </TableCell>
+
+                      <TableCell scope="row">
+                        R${kit.custo.toFixed(2)}
+                      </TableCell>
+
+                      <TableCell
+                        scope="row"
+                        dangerouslySetInnerHTML={{ __html: kit.descricao }}
+                      ></TableCell>
+
+                      <TableCell scope="row">
+                        <a href={kit.datasheet}>Datasheet</a>
+                      </TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </TableContainer>
           </Container>
         </>
       ) : (

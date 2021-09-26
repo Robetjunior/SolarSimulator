@@ -2,6 +2,9 @@ import React from 'react';
 import validate from '../validateInfo';
 import useForm from '../useForm';
 import '../Form.css';
+import Button from '@material-ui/core/Button';
+import { Input } from '@mui/material';
+import { mdiRocket } from '@mdi/js';
 
 const FormSignup = ({ submitForm, addNote }) => {
   const { handleChange, handleSubmit, values, errors } = useForm(
@@ -62,9 +65,15 @@ const FormSignup = ({ submitForm, addNote }) => {
           {errors.cep && <p>{errors.cep}</p>}
         </div>
 
-        <button className="form-input-btn" type="submit">
+        <Button
+          startIcon={<mdiRocket />}
+          variant="contained"
+          size="large"
+          color="primary"
+          type="submit"
+        >
           Simular Teste
-        </button>
+        </Button>
       </form>
     </div>
   );

@@ -11,7 +11,22 @@ import {
   MenuItem,
 } from '@material-ui/core';
 
+import { makeStyles } from '@material-ui/styles';
+
+const useStyles = makeStyles({
+  root: {
+    border: 0,
+    fontSize: 16,
+    borderRadius: 3,
+    marginTop: '1rem',
+    height: 48,
+    padding: '0 30px',
+  },
+});
+
 const FormSignup = ({ submitForm, addNote }) => {
+  const classes = useStyles();
+
   const { handleChange, handleSubmit, values, errors } = useForm(
     submitForm,
     validate
@@ -78,7 +93,13 @@ const FormSignup = ({ submitForm, addNote }) => {
           {errors.cep && <p>{errors.cep}</p>}
         </div>
 
-        <Button variant="contained" size="large" color="primary" type="submit">
+        <Button
+          variant="contained"
+          size="large"
+          color="primary"
+          type="submit"
+          className={classes.root}
+        >
           Simular Teste
         </Button>
       </form>

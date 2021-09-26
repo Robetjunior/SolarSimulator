@@ -1,11 +1,17 @@
 import { useState, useEffect } from 'react';
+import { addNote } from './actions';
+import { useDispatch } from 'react-redux';
+import { loadNotes } from './notesReducer';
 
 const useForm = (callback, validate) => {
+  const dispatch = useDispatch();
+
   const [values, setValues] = useState({
     typeStructure: '',
     valorConta: '',
     cep: '',
   });
+
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -19,9 +25,10 @@ const useForm = (callback, validate) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
     setErrors(validate(values));
+    dispatch(addNote(values));
     setIsSubmitting(true);
+    dispatch(loadNotes());
   };
 
   useEffect(() => {

@@ -1,11 +1,35 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import '../Form.css';
 
-const FormSuccess = () => {
+const FormSuccess = ({ clientData }) => {
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    if (clientData.status === 'dados localizados') {
+      setIsLoading(false);
+    }
+  }, [clientData]);
+
   return (
-    <div className="form-content-right">
-      <h1 className="form-success">We have received your request!</h1>
-    </div>
+    <>
+      {!isLoading ? (
+        <div>
+          {clientData.parcelamento.map((parcelamento, id) => {
+            return (
+              <div key={id}>
+                <p>Parcelas: {parcelamento.parcelas}</p>
+                <p>Taxa Minina: {parcelamento.taxa_minina}</p>
+                <p>Taxa Maxima: {parcelamento.taxa_maxima}</p>
+                <p>Valor Minimo: {parcelamento.valor_minimo}</p>
+                <p>Valor MAximo: {parcelamento.valor_maximo}</p>
+              </div>
+            );
+          })}
+        </div>
+      ) : (
+        <p>Carregando...</p>
+      )}
+    </>
   );
 };
 

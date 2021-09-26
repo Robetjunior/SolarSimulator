@@ -2,9 +2,14 @@ import React from 'react';
 import validate from '../validateInfo';
 import useForm from '../useForm';
 import '../Form.css';
-import Button from '@material-ui/core/Button';
-import { Input } from '@mui/material';
-import { mdiRocket } from '@mdi/js';
+import {
+  Container,
+  Button,
+  TextField,
+  Typography,
+  Select,
+  MenuItem,
+} from '@material-ui/core';
 
 const FormSignup = ({ submitForm, addNote }) => {
   const { handleChange, handleSubmit, values, errors } = useForm(
@@ -13,27 +18,35 @@ const FormSignup = ({ submitForm, addNote }) => {
   );
 
   return (
-    <div className="form-content-right">
+    <Container className="form-content-right">
+      <Typography variant="h2" className="formH1">
+        Simulador Solar
+      </Typography>
       <form onSubmit={handleSubmit} className="form" noValidate>
         <div className="form-inputs">
           <label className="form-label" id="typeStructure">
             Tipo de Estrutura
           </label>
-          <select
+          <Select
             className="form-input"
             name="typeStructure"
             id="typeStructure"
             onChange={handleChange}
             value={values.typeStructure}
+            labelId="typeStructure"
           >
-            <option value="">Escolha um tipo de estrutura</option>
-            <option value="fibrocimento-madeira">Fibrocimento Madeira</option>
-            <option value="fibrocimento-metalico">Fibrocimento Metalico</option>
-            <option value="ceramico">Ceramico</option>
-            <option value="metalico">Metalico</option>
-            <option value="laje">Laje</option>
-            <option value="solo">Solo</option>
-          </select>
+            <MenuItem value="">Escolha um tipo de estrutura</MenuItem>
+            <MenuItem value={'fibrocimento-madeira'}>
+              Fibrocimento Madeira
+            </MenuItem>
+            <MenuItem value={'fibrocimento-metalico'}>
+              Fibrocimento Metalico
+            </MenuItem>
+            <MenuItem value={'ceramico'}>Ceramico</MenuItem>
+            <MenuItem value={'metalico'}>Metalico</MenuItem>
+            <MenuItem value={'laje'}>Laje</MenuItem>
+            <MenuItem value={'solo'}>Solo</MenuItem>
+          </Select>
 
           {errors.typeStructure && <p>{errors.typeStructure}</p>}
         </div>
@@ -41,7 +54,7 @@ const FormSignup = ({ submitForm, addNote }) => {
           <label className="form-label" id="valorConta">
             Valor da Conta
           </label>
-          <input
+          <TextField
             id="valorConta"
             className="form-input"
             type="number"
@@ -54,7 +67,7 @@ const FormSignup = ({ submitForm, addNote }) => {
         </div>
         <div className="form-inputs">
           <label className="form-label">CEP</label>
-          <input
+          <TextField
             className="form-input"
             type="text"
             name="cep"
@@ -65,17 +78,11 @@ const FormSignup = ({ submitForm, addNote }) => {
           {errors.cep && <p>{errors.cep}</p>}
         </div>
 
-        <Button
-          startIcon={<mdiRocket />}
-          variant="contained"
-          size="large"
-          color="primary"
-          type="submit"
-        >
+        <Button variant="contained" size="large" color="primary" type="submit">
           Simular Teste
         </Button>
       </form>
-    </div>
+    </Container>
   );
 };
 

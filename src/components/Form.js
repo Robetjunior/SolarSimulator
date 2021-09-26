@@ -24,9 +24,7 @@ const Form = () => {
           <FormSignup submitForm={submitForm} />
         </div>
       ) : (
-        <div className="form-container">
-          <FormSuccess clientData={notes} />
-        </div>
+        <FormSuccess clientData={notes} />
       )}
     </>
   );

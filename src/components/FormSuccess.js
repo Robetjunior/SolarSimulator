@@ -18,6 +18,9 @@ import {
 import { makeStyles } from '@material-ui/styles';
 
 const useStyles = makeStyles((theme) => ({
+  background: {
+    backgroundColor: 'rgb(255, 179, 39)',
+  },
   palette: {
     color: 'green',
     fontWeight: 'bold',
@@ -35,6 +38,9 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: 15,
     padding: '10px',
     marginTop: '1rem',
+    boxShadow:
+      '0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.2)',
+    backgroundColor: '#fff',
   },
   tableHeaderCell: {
     fontWeight: 'bold',
@@ -73,7 +79,7 @@ const FormSuccess = ({ clientData }) => {
   return (
     <>
       {!isLoading ? (
-        <>
+        <div className={classes.background}>
           <Container maxWidth="lg" className={classes.tableContainer}>
             <Typography variant="h5" className={classes.typography}>
               Potencial:
@@ -251,7 +257,7 @@ const FormSuccess = ({ clientData }) => {
               </Table>
             </TableContainer>
           </Container>
-        </>
+        </div>
       ) : (
         <Container maxWidth="lg" className={classes.tableContainer}>
           <Typography variant="h2">Carregando...</Typography>

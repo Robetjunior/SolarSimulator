@@ -22,6 +22,11 @@ const useStyles = makeStyles({
     height: 48,
     padding: '0 30px',
   },
+  formH1: {
+    color: 'rgb(255, 179, 39)',
+    textAlign: 'center',
+    paddingTop: '3rem',
+  },
 });
 
 const FormSignup = ({ submitForm, addNote }) => {
@@ -34,7 +39,7 @@ const FormSignup = ({ submitForm, addNote }) => {
 
   return (
     <Container className="form-content-right">
-      <Typography variant="h2" className="formH1">
+      <Typography variant="h2" className={classes.formH1}>
         Simulador Solar
       </Typography>
       <form onSubmit={handleSubmit} className="form" noValidate>
